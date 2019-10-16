@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 #####
 # This script sets up the basic user Jupyter home directory for use on Pangeo.
@@ -65,7 +65,11 @@ for ENV_PATH in ${ENV_DIR}/*; do
     python -m ipykernel install --user --name $ENV --display-name "Python ($ENV)" 
   fi
 done
-conda activate $ORIG_CONDA_ENV
+
+#####################################
+# activate the environment with jupyter lab in it 
+#####################################
+conda activate /envs/infrastructure/lab # TODO: this should be a env var or somehow less hard coded.
 
 
 

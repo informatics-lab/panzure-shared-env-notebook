@@ -65,7 +65,7 @@ RUN ln -s /home/jovyan /root
 #####################################################################
 
 
-
+COPY dask.yaml /etc/dask/config.yaml
 
 USER $NB_USER
 

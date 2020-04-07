@@ -65,6 +65,7 @@ RUN chmod g+w /scratch
 RUN rm -r /root
 RUN ln -s /home/jovyan /root
 
+RUN conda install gcc_linux-64 -y
 #####################################################################
 # User                                                              #
 #####################################################################
@@ -72,6 +73,8 @@ RUN ln -s /home/jovyan /root
 USER $NB_USER
 
 WORKDIR /home/$NB_USER
+
+
 
 
 SHELL ["/bin/bash", "-c"]

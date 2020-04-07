@@ -49,6 +49,12 @@ if [ ! -f ~/.condarc ]; then
   conda config --add envs_dirs $LOCAL_ENV_DIR
 fi
 
+
+#####################################
+# Link to data dirs 
+#####################################
+ln -s /data/ ~/data
+
 #####################################
 # install kernels 
 #####################################

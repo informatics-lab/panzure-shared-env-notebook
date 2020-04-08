@@ -51,12 +51,12 @@ fi
 
 
 #####################################
-# Link to data dirs 
+# Link to data dirs
 #####################################
 ln -s /data/ ~/data
 
 #####################################
-# install kernels 
+# install Python kernels
 #####################################
 
 ORIG_CONDA_ENV=$CONDA_DEFAULT_ENV
@@ -71,6 +71,12 @@ for ENV_PATH in ${ENV_DIR}/*; do
     python -m ipykernel install --user --name $ENV --display-name "Python ($ENV)" 
   fi
 done
+
+#####################################
+# and copy pre-registered kernels
+#####################################
+
+cp -r /envs/pre-built-envs/kernels/* ~/.local/share/jupyter/kernels
 
 #####################################
 # activate the environment with jupyter lab in it 

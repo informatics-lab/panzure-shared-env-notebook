@@ -16,21 +16,23 @@ echo "Getting example notebooks..."
 if [ -z "$EXAMPLES_GIT_URL" ]; then
     export EXAMPLES_GIT_URL=https://github.com/pangeo-data/pangeo-example-notebooks
 fi
+EXAMPLES_DIR="examples_and_docs"
 rmdir examples &> /dev/null # deletes directory if empty, in favour of fresh clone
-if [ ! -d "examples" ]; then
-  git clone $EXAMPLES_GIT_URL examples
+if [ ! -d "$EXAMPLES_DIR" ]; then
+  git clone $EXAMPLES_GIT_URL $EXAMPLES_DIR
 fi
-cd examples
+cd $EXAMPLES_DIR
 chmod -R 700 *.ipynb
 git remote set-url origin $EXAMPLES_GIT_URL
 git fetch origin
 git reset --hard origin/master
 git merge --strategy-option=theirs origin/master
 if [ ! -f DONT_SAVE_ANYTHING_HERE.md ]; then
-  echo "Files in this directory should be treated as read-only"  > DONT_SAVE_ANYTHING_HERE.md
+  echo "# Files in this directory should be treated as read-only"  > DONT_SAVE_ANYTHING_HERE.md
 fi
 chmod -R 400 *.ipynb
 cd ..
+chmod -R 500 $EXAMPLES_DIR
 echo "Done"
 
 

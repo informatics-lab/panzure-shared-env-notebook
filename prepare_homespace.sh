@@ -55,7 +55,7 @@ fi
 #####################################
 # Link to data dirs
 #####################################
-ln -s /data/ ~/data
+ln -s /datasets/ /home/jovyan/data
 
 #####################################
 # install Python kernels
